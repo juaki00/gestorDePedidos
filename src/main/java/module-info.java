@@ -1,4 +1,4 @@
-module com.example.gestordepedidos {
+module com.example.proyectoBaseJDBCYJavaFX {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
@@ -6,8 +6,8 @@ module com.example.gestordepedidos {
 //    requires lombok;
 
 
-    opens com.example.gestordepedidos to javafx.fxml;
-    exports com.example.gestordepedidos;
+    opens com.example.proyectoBaseJDBCYJavaFX to javafx.fxml;
+    exports com.example.proyectoBaseJDBCYJavaFX;
 
 
 }

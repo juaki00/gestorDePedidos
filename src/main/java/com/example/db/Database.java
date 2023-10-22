@@ -9,16 +9,12 @@ import java.util.logging.Logger;
 
 public class Database {
 
+            private static final Connection connection;
 
-
-            private static Connection connection;
-
-            private static Logger logger;
-
-            static{
+    static{
                 InputStream is = Database.class.getClassLoader().getResourceAsStream("database.properties");
                 Properties config = new Properties();
-                logger = Logger.getLogger(Database.class.getName());
+                Logger logger = Logger.getLogger(Database.class.getName());
                 try {
                     config.load(is);
 
@@ -33,9 +29,8 @@ public class Database {
                 String user = (String) config.get("user");
                 String url = (String) config.get("url");
                 String urlCompleta = url + host + ":" + port + "/" + name;
-                String password = "";
                 try {
-                    connection = DriverManager.getConnection(urlCompleta,user,password);
+                    connection = DriverManager.getConnection(urlCompleta,user,pass);
                     logger.info("Successful connection to database");
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
