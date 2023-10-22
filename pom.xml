@@ -24,15 +24,6 @@
       <version>8.1.0</version>
     </dependency>
 
-    <!-- lombok -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.30</version>
-      <scope>provided</scope>
-    </dependency>
-
-
     <!-- java fx -->
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -58,7 +49,15 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>  </dependencies>
+    </dependency>
+
+<!--    lombok-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.30</version>
+    </dependency>
+  </dependencies>
 
 
   <build>
@@ -68,13 +67,13 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.11.0</version>
         <configuration>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>org.projectlombok</groupId>
-              <artifactId>lombok</artifactId>
-              <version>1.18.30</version>
-            </path>
-          </annotationProcessorPaths>
+<!--          <annotationProcessorPaths>-->
+<!--            <path>-->
+<!--              <groupId>org.projectlombok</groupId>-->
+<!--              <artifactId>lombok</artifactId>-->
+<!--              <version>1.18.30</version>-->
+<!--            </path>-->
+<!--          </annotationProcessorPaths>-->
           <source>21</source>
           <target>21</target>
         </configuration>

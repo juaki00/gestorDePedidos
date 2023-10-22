@@ -2,6 +2,7 @@ package com.example.gestordepedidos.usuario;
 
 import lombok.Data;
 
+
 @Data
 public class Usuario {
     private int id;

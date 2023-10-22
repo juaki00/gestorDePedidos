@@ -1,8 +1,8 @@
 package com.example.gestordepedidos.producto;
 
-import lombok.Data;
-
-@Data
+//import lombok.Data;
+//
+//@Data
 public class Producto {
 
     private int id;
