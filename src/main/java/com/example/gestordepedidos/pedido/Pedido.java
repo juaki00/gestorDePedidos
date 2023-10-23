@@ -2,10 +2,10 @@ package com.example.gestordepedidos.pedido;
 
 import java.util.Date;
 
-//import lombok.Data;
-//
-//
-//@Data
+import lombok.Data;
+
+
+@Data
 public class Pedido {
 
     private int id;

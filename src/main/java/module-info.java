@@ -8,6 +8,8 @@ module com.example.gestordepedidos {
 
     opens com.example.gestordepedidos to javafx.fxml;
     exports com.example.gestordepedidos;
+    exports com.example.gestordepedidos.ui;
+    opens com.example.gestordepedidos.ui to javafx.fxml;
 
 
 }

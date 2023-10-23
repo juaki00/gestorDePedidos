@@ -1,4 +1,4 @@
-package com.example.gestordepedidos;
+package com.example.gestordepedidos.ui;
 
 import com.example.db.Database;
 import javafx.fxml.FXML;
@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 
 import java.sql.Connection;
 
-public class LoginController {
+public class MainController {
     @FXML
     private Label welcomeText;
 
