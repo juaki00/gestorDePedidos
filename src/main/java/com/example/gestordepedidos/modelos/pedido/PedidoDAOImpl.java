@@ -33,9 +33,9 @@ public class PedidoDAOImpl implements PedidoDAO {
                 Pedido pedido = new Pedido();
                 pedido.setId(rs.getInt("id"));
                 pedido.setCodigo(rs.getString("codigo"));
-                pedido.setFecha(rs.getDate("fecha"));
+                pedido.setFecha(rs.getString("fecha"));
                 pedido.setUsuarioId(rs.getInt("usuario"));
-                pedido.setTotal(rs.getInt("total"));
+                pedido.setTotal(rs.getDouble("total"));
                 pedidos.add(pedido);
             }
 

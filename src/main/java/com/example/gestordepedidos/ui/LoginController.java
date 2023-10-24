@@ -3,6 +3,7 @@ import com.example.gestordepedidos.MainAplication;
 import com.example.gestordepedidos.modelos.usuario.Usuario;
 import com.example.gestordepedidos.modelos.usuario.UsuarioDAO;
 import com.example.gestordepedidos.modelos.usuario.UsuarioDAOimpl;
+import com.example.sesion.Sesion;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,7 +42,8 @@ public class LoginController implements Initializable {
         UsuarioDAO dao = new UsuarioDAOimpl();
         try{
             if (dao.isCorrectUser(tfUsuario.getText(), tfPass.getText())) {
-                Usuario.usuarioSesion = dao.loadLogin(tfUsuario.getText(), tfPass.getText());
+//                Usuario.usuarioSesion = dao.loadLogin(tfUsuario.getText(), tfPass.getText());
+                Sesion.setUsuarioActual(dao.loadLogin(tfUsuario.getText(), tfPass.getText() ));
                 FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/pedidos-view.fxml"));
                 Scene scene = null;
                 try {
@@ -64,6 +66,5 @@ public class LoginController implements Initializable {
             info.setText("Error de conexion con la base de datos");
         }
     }
-
 
 }
