@@ -1,4 +1,4 @@
-package com.example.gestordepedidos.pedido;
+package com.example.gestordepedidos.modelos.pedido;
 
 import java.util.Date;
 

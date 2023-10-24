@@ -1,4 +1,4 @@
-package com.example.gestordepedidos.producto;
+package com.example.gestordepedidos.modelos.producto;
 
 import lombok.Data;
 

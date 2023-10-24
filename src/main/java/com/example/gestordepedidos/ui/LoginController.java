@@ -1,9 +1,8 @@
 package com.example.gestordepedidos.ui;
 import com.example.gestordepedidos.MainAplication;
-import com.example.gestordepedidos.usuario.Usuario;
-import com.example.gestordepedidos.usuario.UsuarioDAO;
-import com.example.gestordepedidos.usuario.UsuarioDAOimpl;
-import javafx.event.ActionEvent;
+import com.example.gestordepedidos.modelos.usuario.Usuario;
+import com.example.gestordepedidos.modelos.usuario.UsuarioDAO;
+import com.example.gestordepedidos.modelos.usuario.UsuarioDAOimpl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

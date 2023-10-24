@@ -1,4 +1,4 @@
-package com.example.gestordepedidos.usuario;
+package com.example.gestordepedidos.modelos.usuario;
 
 import lombok.Data;
 

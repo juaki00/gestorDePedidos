@@ -1,11 +1,10 @@
-package com.example.gestordepedidos.pedido;
+package com.example.gestordepedidos.modelos.pedido;
 
 import com.example.db.Database;
-import com.example.gestordepedidos.usuario.Usuario;
+import com.example.gestordepedidos.modelos.usuario.Usuario;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class PedidoDAOImpl implements PedidoDAO {

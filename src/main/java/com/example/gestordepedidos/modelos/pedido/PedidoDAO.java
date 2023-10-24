@@ -1,6 +1,6 @@
-package com.example.gestordepedidos.pedido;
+package com.example.gestordepedidos.modelos.pedido;
 
-import com.example.gestordepedidos.usuario.Usuario;
+import com.example.gestordepedidos.modelos.usuario.Usuario;
 
 import java.util.ArrayList;
 

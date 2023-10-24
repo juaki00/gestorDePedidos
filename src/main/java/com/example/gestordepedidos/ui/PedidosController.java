@@ -1,13 +1,11 @@
 package com.example.gestordepedidos.ui;
 
 import com.example.gestordepedidos.MainAplication;
-import com.example.gestordepedidos.usuario.Usuario;
-import javafx.event.ActionEvent;
+import com.example.gestordepedidos.modelos.usuario.Usuario;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
