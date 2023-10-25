@@ -53,6 +53,7 @@ public class PedidosController implements Initializable {
 
 
         tablaPedidos.getSelectionModel().selectedItemProperty().addListener((observableValue, vOld, vNew) -> {
+            Sesion.setPedidoPulsado(vNew);
             MainAplication.loadFXML("detallesPedido-view.fxml");
         });
 
@@ -76,7 +77,6 @@ public class PedidosController implements Initializable {
             return new SimpleStringProperty(cantidad);
         });
         cUsuario.setCellValueFactory( (fila) ->{
-            Integer idUsuario = fila.getValue().getUsuarioId();
             String nombre = Sesion.getUsuarioActual().getNombre();
             return new SimpleStringProperty(nombre);
         });
@@ -93,17 +93,7 @@ public class PedidosController implements Initializable {
 
     @javafx.fxml.FXML
     public void logoutButton() {
-//        FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
-//        Stage stage = (Stage) btnLogout.getScene().getWindow();
-//        Scene scene = null;
-//        try {
-//            scene = new Scene(fxmlLoader.load(), 350, 450);
-//        } catch (IOException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//        stage.setTitle("Login");
-//        stage.setScene(scene);
-//        stage.show();
+        Sesion.setUsuarioActual(null);
         MainAplication.loadFXML("login-view.fxml");
     }
 

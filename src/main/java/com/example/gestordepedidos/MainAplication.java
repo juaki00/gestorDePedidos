@@ -29,11 +29,7 @@ public class MainAplication extends Application {
     }
 
     public static void main(String[] args) {
-//        launch();
-
-        Pedido pedido = new Pedido(1);
-        PedidoDAOImpl dao = new PedidoDAOImpl();
-        System.out.println(dao.detallesDeUnPedido(pedido));
+        launch();
     }
 
 
