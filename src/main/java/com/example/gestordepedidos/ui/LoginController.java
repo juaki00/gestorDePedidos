@@ -44,18 +44,8 @@ public class LoginController implements Initializable {
             if (dao.isCorrectUser(tfUsuario.getText(), tfPass.getText())) {
 //                Usuario.usuarioSesion = dao.loadLogin(tfUsuario.getText(), tfPass.getText());
                 Sesion.setUsuarioActual(dao.loadLogin(tfUsuario.getText(), tfPass.getText() ));
-                FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/pedidos-view.fxml"));
-                Scene scene = null;
-                try {
-                    scene = new Scene(fxmlLoader.load(), 800, 600);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-//                Stage stage = (Stage) btnEntrar.getScene().getWindow();
-                Stage stage = MainAplication.getMyStage();
-                stage.setTitle("Pedidos");
-                stage.setScene(scene);
-                stage.show();
+
+                MainAplication.loadFXML("pedidos-view.fxml");
             } else {
                 tfUsuario.setText("");
                 tfPass.setText("");

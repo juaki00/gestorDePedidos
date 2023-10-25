@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,8 +28,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class PedidosController implements Initializable {
-    @javafx.fxml.FXML
-    private Button btnLogout;
     @javafx.fxml.FXML
     private Label labelNombre;
     @javafx.fxml.FXML
@@ -44,9 +43,21 @@ public class PedidosController implements Initializable {
     private TableColumn<Pedido,String> cUsuario;
     @javafx.fxml.FXML
     private TableColumn<Pedido,String> cTotal;
+    @javafx.fxml.FXML
+    private Button btnLogout;
+    @javafx.fxml.FXML
+    private Pane mainPedidos;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        tablaPedidos.getSelectionModel().selectedItemProperty().addListener((observableValue, vOld, vNew) -> {
+            MainAplication.loadFXML("detallesPedido-view.fxml");
+        });
+
+
+
         Usuario user = Sesion.getUsuarioActual();
         PedidoDAOImpl daoPedido = new PedidoDAOImpl();
         List<Pedido> pedidosDeUser = daoPedido.pedidosDeUnUsuario(user);
@@ -82,18 +93,20 @@ public class PedidosController implements Initializable {
 
     @javafx.fxml.FXML
     public void logoutButton() {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
-        Stage stage = (Stage) btnLogout.getScene().getWindow();
-        Scene scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 350, 450);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-        stage.setTitle("Login");
-        stage.setScene(scene);
-        stage.show();
+//        FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
+//        Stage stage = (Stage) btnLogout.getScene().getWindow();
+//        Scene scene = null;
+//        try {
+//            scene = new Scene(fxmlLoader.load(), 350, 450);
+//        } catch (IOException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//        stage.setTitle("Login");
+//        stage.setScene(scene);
+//        stage.show();
+        MainAplication.loadFXML("login-view.fxml");
     }
+
 
 
 }

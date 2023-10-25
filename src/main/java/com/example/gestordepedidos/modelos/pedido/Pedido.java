@@ -16,4 +16,8 @@ public class Pedido {
     private String fecha;
     private int usuarioId;
     private Double total;
+
+    public Pedido(int id){
+        this.id=id;
+    }
 }
