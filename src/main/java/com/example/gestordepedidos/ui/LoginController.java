@@ -45,7 +45,7 @@ public class LoginController implements Initializable {
 //                Usuario.usuarioSesion = dao.loadLogin(tfUsuario.getText(), tfPass.getText());
                 Sesion.setUsuarioActual(dao.loadLogin(tfUsuario.getText(), tfPass.getText() ));
 
-                MainAplication.loadFXML("pedidos-view.fxml");
+                MainAplication.loadFXML("pedidos-view.fxml", "Pedidos de " + Sesion.getUsuarioActual().getNombre());
             } else {
                 tfUsuario.setText("");
                 tfPass.setText("");

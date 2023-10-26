@@ -54,7 +54,7 @@ public class PedidosController implements Initializable {
 
         tablaPedidos.getSelectionModel().selectedItemProperty().addListener((observableValue, vOld, vNew) -> {
             Sesion.setPedidoPulsado(vNew);
-            MainAplication.loadFXML("detallesPedido-view.fxml");
+            MainAplication.loadFXML("detallesPedido-view.fxml", "Detalles del pedido");
         });
 
 
@@ -94,7 +94,8 @@ public class PedidosController implements Initializable {
     @javafx.fxml.FXML
     public void logoutButton() {
         Sesion.setUsuarioActual(null);
-        MainAplication.loadFXML("login-view.fxml");
+        Sesion.setPedidoPulsado(null);
+        MainAplication.loadFXML("login-view.fxml", "Iniciar Sesión");
     }
 
 

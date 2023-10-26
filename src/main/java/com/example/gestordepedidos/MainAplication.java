@@ -33,12 +33,13 @@ public class MainAplication extends Application {
     }
 
 
-    public static void loadFXML(String fxml){
+    public static void loadFXML(String fxml, String titulo){
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/"+fxml));
             System.out.println("ui/"+fxml);
             Scene scene = new Scene(fxmlLoader.load());
+            myStage.setTitle(titulo);
             myStage.setScene(scene);
         } catch (IOException e) {
             System.out.println("Error al cargar el archivo "+fxml);

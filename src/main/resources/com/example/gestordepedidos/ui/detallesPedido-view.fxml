@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="435.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestordepedidos.ui.DetallesPedidoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestordepedidos.ui.DetallesPedidoController">
    <children>
       <FlowPane>
          <children>
-            <Label text="Pedido numero XXX">
+            <Label fx:id="labelTitulo" text="Pedido numero XXX">
                <font>
                   <Font size="24.0" />
                </font>
@@ -36,19 +36,26 @@
          </columnResizePolicy>
       </TableView>
       <BorderPane>
-         <center>
-            <Button contentDisplay="TOP" mnemonicParsing="false" text="Button">
-               <padding>
-                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-               </padding>
-            </Button>
-         </center>
          <VBox.margin>
             <Insets />
          </VBox.margin>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="20.0" left="100.0" right="100.0" top="20.0" />
          </padding>
+         <right>
+            <Button fx:id="btnAtras" contentDisplay="TOP" mnemonicParsing="false" onAction="#atras" text="Atrás" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </Button>
+         </right>
+         <left>
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logout" text="Logout" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </Button>
+         </left>
       </BorderPane>
    </children>
 </VBox>

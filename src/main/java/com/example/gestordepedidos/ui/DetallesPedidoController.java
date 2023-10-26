@@ -1,10 +1,13 @@
 package com.example.gestordepedidos.ui;
 
+import com.example.gestordepedidos.MainAplication;
 import com.example.gestordepedidos.modelos.item.Item;
 import com.example.gestordepedidos.modelos.pedido.Pedido;
 import com.example.gestordepedidos.modelos.pedido.PedidoDAOImpl;
 import com.example.gestordepedidos.modelos.producto.Producto;
 import com.example.sesion.Sesion;
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,14 +33,21 @@ public class DetallesPedidoController implements Initializable
     private TableColumn<Item,String>  cCantidad;
     @FXML
     private TableColumn<Item,String> cFecha;
+    @FXML
+    private Button btnAtras;
+    @FXML
+    private Button btnLogout;
+    @FXML
+    private Label labelTitulo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-
        PedidoDAOImpl dao = new PedidoDAOImpl();
         ArrayList<Item> items = dao.detallesDeUnPedido(Sesion.getPedidoPulsado());
+
+        //Cambiar titulo
+        labelTitulo.setText("Pedido numero " + Sesion.getPedidoPulsado().getId());
 
         //Rellenar la tabla
         cNombre. setCellValueFactory( (fila) -> {
@@ -59,7 +69,17 @@ public class DetallesPedidoController implements Initializable
         ObservableList<Item> observableList = FXCollections.observableArrayList();
         observableList.addAll(items);
         tablaDetallesPedido.setItems(observableList);
-
-
 }
+
+    @FXML
+    public void atras(ActionEvent actionEvent) {
+        MainAplication.loadFXML("pedidos-view.fxml", "Pedidos de " + Sesion.getUsuarioActual().getNombre());
+    }
+
+    @FXML
+    public void logout(ActionEvent actionEvent) {
+        Sesion.setUsuarioActual(null);
+        Sesion.setPedidoPulsado(null);
+        MainAplication.loadFXML("login-view.fxml", "Iniciar Sesión");
+    }
 }
