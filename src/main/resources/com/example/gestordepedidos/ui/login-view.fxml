@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestordepedidos.ui.LoginController">
+<BorderPane id="btnEntrar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" styleClass="fondo" stylesheets="@css/estilo3.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestordepedidos.ui.LoginController">
    <center>
         <VBox alignment="CENTER" spacing="27.0">
             <children>
@@ -43,10 +43,13 @@
                      </padding></PasswordField>
                     </children>
                 </HBox>
-                <Button id="btnEntrar" fx:id="btnEntrar" mnemonicParsing="false" onAction="#btnEntrar" text="Entrar">
+                <Button fx:id="btnEntrar" mnemonicParsing="false" onAction="#btnEntrar" styleClass="btnEntrar" stylesheets="@css/estilo3.css" text="Entrar">
                <padding>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-               </padding></Button>
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
             </children>
         </VBox>
    </center>

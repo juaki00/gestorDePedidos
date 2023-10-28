@@ -2,9 +2,7 @@ package com.example.gestordepedidos.ui;
 
 import com.example.gestordepedidos.MainAplication;
 import com.example.gestordepedidos.modelos.item.Item;
-import com.example.gestordepedidos.modelos.pedido.Pedido;
 import com.example.gestordepedidos.modelos.pedido.PedidoDAOImpl;
-import com.example.gestordepedidos.modelos.producto.Producto;
 import com.example.sesion.Sesion;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -56,7 +54,7 @@ public class DetallesPedidoController implements Initializable
         });
         cCantidad. setCellValueFactory( (fila) -> {
             int cantidad = fila.getValue().getCantidad();
-            return new SimpleStringProperty(cantidad,toString());
+            return new SimpleStringProperty(Integer.toString(cantidad));
         });
         cPrecio. setCellValueFactory( (fila) -> {
             double precio = fila.getValue().getPrecio();

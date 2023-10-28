@@ -1,0 +1,28 @@
+Button.btnEntrar {
+    -fx-background-color: #609d88;
+    -fx-border-color: white;
+}
+Button.btnLogout {
+    -fx-background-color: #cb6f6f;
+    -fx-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+Button.btnAtras {
+     -fx-background-color: #609d88;
+     -fx-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+
+.table-cell {
+    -fx-padding: 10px;
+}
+.fondo{
+    -fx-background-color: rgb(151, 199, 184);
+}
+.table-row-cell:even{
+    -fx-background-color: rgb(208, 224, 218);
+}
+.table-row-cell:odd{
+    -fx-background-color: rgb(219, 232, 224);
+}
+.table-row-cell:hover {
+    -fx-background-color: rgb(107, 152, 136);
+}

@@ -23,6 +23,8 @@ public class MainAplication extends Application {
 //        FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        stage.setResizable(false);
+        myStage.setResizable(false);
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
@@ -43,7 +45,7 @@ public class MainAplication extends Application {
             myStage.setScene(scene);
         } catch (IOException e) {
             System.out.println("Error al cargar el archivo "+fxml);
-            throw new RuntimeException(e.getStackTrace().toString());
+            throw new RuntimeException(e.getMessage());
         }
 
     }

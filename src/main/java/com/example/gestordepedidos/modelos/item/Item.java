@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Item {
     private String nombre;
-    private int cantidad ;
-    private double precio;
+    private Integer cantidad ;
+    private Double precio;
     private String fecha;
 }

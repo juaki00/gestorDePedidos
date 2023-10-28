@@ -6,6 +6,7 @@ import com.example.gestordepedidos.modelos.usuario.Usuario;
 
 import java.math.BigInteger;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -18,7 +19,10 @@ public class PedidoDAOImpl implements PedidoDAO {
             " INNER JOIN producto ON producto.id = item.id_producto)" +
             " INNER JOIN usuario ON usuario.id = pedido.usuario" +
             " WHERE pedido.id = ?";
-
+    private final String QUERYSUMATOTALDEUNPEDIDO = "SELECT SUM(item.cantidad * producto.precio) AS suma FROM " +
+            "(pedido INNER JOIN item ON pedido.id = item.id_pedido)" +
+            " INNER JOIN producto ON producto.id = item.id_producto" +
+            " WHERE pedido.id = ?";
     @Override
     public Pedido load(Long id) {
         return null;
@@ -42,7 +46,7 @@ public class PedidoDAOImpl implements PedidoDAO {
                 pedido.setCodigo(rs.getString("codigo"));
                 pedido.setFecha(rs.getString("fecha"));
                 pedido.setUsuarioId(rs.getInt("usuario"));
-                pedido.setTotal(rs.getDouble("total"));
+                pedido.setTotal(this.sumaTotalDeUnPedido(pedido.getId()));
                 pedidos.add(pedido);
             }
 
@@ -53,7 +57,7 @@ public class PedidoDAOImpl implements PedidoDAO {
     }
 
     public ArrayList<Item> detallesDeUnPedido(Pedido pedido) {
-        ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<Item> items = new ArrayList<>();
         Item item;
         try (PreparedStatement pst = connection.prepareStatement(QUERYDETALLESDEUNPEDIDO)) {
             pst.setInt(1, pedido.getId());
@@ -71,6 +75,24 @@ public class PedidoDAOImpl implements PedidoDAO {
             throw new RuntimeException(e);
         }
         return items;
+    }
+
+    public String sumaTotalDeUnPedido(int idPedido){
+        double resultado = 0.0;
+        try (PreparedStatement pst = connection.prepareStatement(QUERYSUMATOTALDEUNPEDIDO)) {
+            pst.setInt(1, idPedido);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                resultado = rs.getDouble("suma");
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        DecimalFormat formato = new DecimalFormat("#.00");
+        String redondeado = formato.format(resultado);
+        System.out.println("numero: "+resultado + "redondeado: "+redondeado);
+        return redondeado;
     }
 }
 

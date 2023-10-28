@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @Data
 public class Pedido {
 
-    private int id;
+    private Integer id;
     private String codigo;
     private String fecha;
-    private int usuarioId;
-    private Double total;
+    private Integer usuarioId;
+    private String total;
 
     public Pedido(int id){
         this.id=id;

@@ -52,6 +52,7 @@ public class PedidosController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
+
         tablaPedidos.getSelectionModel().selectedItemProperty().addListener((observableValue, vOld, vNew) -> {
             Sesion.setPedidoPulsado(vNew);
             MainAplication.loadFXML("detallesPedido-view.fxml", "Detalles del pedido");
@@ -61,7 +62,9 @@ public class PedidosController implements Initializable {
 
         Usuario user = Sesion.getUsuarioActual();
         PedidoDAOImpl daoPedido = new PedidoDAOImpl();
-        List<Pedido> pedidosDeUser = daoPedido.pedidosDeUnUsuario(user);
+        List<Pedido> pedidosDeUser = daoPedido.pedidosDeUnUsuario(user) ;
+
+
 
         //Rellenar la tabla
         cId.setCellValueFactory( (fila) -> {
@@ -81,8 +84,8 @@ public class PedidosController implements Initializable {
             return new SimpleStringProperty(nombre);
         });
         cTotal.setCellValueFactory( (fila) -> {
-            Double total = fila.getValue().getTotal();
-            return new SimpleStringProperty(total.toString());
+            String total = fila.getValue().getTotal();
+            return new SimpleStringProperty(total);
         });
 
 
