@@ -9,8 +9,6 @@ import java.util.logging.Logger;
 
 public class Database {
 
-
-
             private static Connection connection;
 
             private static Logger logger;
@@ -33,14 +31,12 @@ public class Database {
                 String user = (String) config.get("user");
                 String url = (String) config.get("url");
                 String urlCompleta = url + host + ":" + port + "/" + name;
-                String password = "";
                 try {
-                    connection = DriverManager.getConnection(urlCompleta,user,password);
+                    connection = DriverManager.getConnection(urlCompleta,user,pass);
                     logger.info("Successful connection to database");
                 } catch (SQLException e) {
                     System.out.println("Error de conexion con la base de datos");;
                 }
-
             }
         public Connection getConnection(){
             return connection;
