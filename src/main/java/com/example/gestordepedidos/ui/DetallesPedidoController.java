@@ -32,10 +32,6 @@ public class DetallesPedidoController implements Initializable
     @FXML
     private TableColumn<Item,String> cFecha;
     @FXML
-    private Button btnAtras;
-    @FXML
-    private Button btnLogout;
-    @FXML
     private Label labelTitulo;
 
     @Override
@@ -70,12 +66,12 @@ public class DetallesPedidoController implements Initializable
 }
 
     @FXML
-    public void atras(ActionEvent actionEvent) {
+    public void atras() {
         MainAplication.loadFXML("pedidos-view.fxml", "Pedidos de " + Sesion.getUsuarioActual().getNombre());
     }
 
     @FXML
-    public void logout(ActionEvent actionEvent) {
+    public void logout() {
         Sesion.setUsuarioActual(null);
         Sesion.setPedidoPulsado(null);
         MainAplication.loadFXML("login-view.fxml", "Iniciar Sesión");
