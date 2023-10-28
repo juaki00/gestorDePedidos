@@ -1,7 +1,5 @@
 package com.example.gestordepedidos.modelos.pedido;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

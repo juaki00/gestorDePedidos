@@ -4,7 +4,6 @@ import com.example.db.Database;
 import com.example.gestordepedidos.modelos.item.Item;
 import com.example.gestordepedidos.modelos.usuario.Usuario;
 
-import java.math.BigInteger;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 public class PedidoDAOImpl implements PedidoDAO {
 
-    private Connection connection = (new Database().getConnection());
+    private final Connection connection = (new Database().getConnection());
     private final String QUERYLOADPEDIDOSDEUSUARIO = "SELECT * FROM pedido WHERE usuario = ?";
     private final String QUERYDETALLESDEUNPEDIDO = "SELECT producto.nombre,item.cantidad,producto.precio,fecha FROM (" +
             "(pedido INNER JOIN item ON pedido.id = item.id_pedido)" +
@@ -35,7 +34,7 @@ public class PedidoDAOImpl implements PedidoDAO {
 
     @Override
     public ArrayList<Pedido> pedidosDeUnUsuario(Usuario user) {
-        ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+        ArrayList<Pedido> pedidos = new ArrayList<>();
         try (PreparedStatement pst = connection.prepareStatement(QUERYLOADPEDIDOSDEUSUARIO)) {
             pst.setInt(1,user.getId());
             ResultSet rs = pst.executeQuery();

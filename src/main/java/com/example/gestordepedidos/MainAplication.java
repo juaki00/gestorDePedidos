@@ -1,15 +1,9 @@
 package com.example.gestordepedidos;
 
-import com.example.gestordepedidos.modelos.pedido.Pedido;
-import com.example.gestordepedidos.modelos.pedido.PedidoDAOImpl;
-import com.example.gestordepedidos.modelos.usuario.Usuario;
-import com.example.sesion.Sesion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.IOException;
 
