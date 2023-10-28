@@ -4,26 +4,11 @@ import com.example.gestordepedidos.MainAplication;
 import com.example.gestordepedidos.modelos.pedido.Pedido;
 import com.example.gestordepedidos.modelos.pedido.PedidoDAOImpl;
 import com.example.gestordepedidos.modelos.usuario.Usuario;
-import com.example.gestordepedidos.modelos.usuario.UsuarioDAOimpl;
 import com.example.sesion.Sesion;
-import javafx.beans.Observable;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.math.BigInteger;
 import java.net.URL;
-import java.sql.Date;
-import java.util.ArrayList;
-//import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -43,10 +28,6 @@ public class PedidosController implements Initializable {
     private TableColumn<Pedido,String> cUsuario;
     @javafx.fxml.FXML
     private TableColumn<Pedido,String> cTotal;
-    @javafx.fxml.FXML
-    private Button btnLogout;
-    @javafx.fxml.FXML
-    private Pane mainPedidos;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
