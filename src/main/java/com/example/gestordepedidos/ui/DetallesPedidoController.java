@@ -33,10 +33,6 @@ public class DetallesPedidoController implements Initializable
     private TableColumn<Item,String> cFecha;
     @FXML
     private Label labelTitulo;
-    @FXML
-    private Button btnLogout;
-    @FXML
-    private Button btnAtras;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,10 +40,10 @@ public class DetallesPedidoController implements Initializable
        PedidoDAOImpl dao = new PedidoDAOImpl();
         ArrayList<Item> items = dao.detallesDeUnPedido(Sesion.getPedidoPulsado());
 
-        //Cambiar titulo
-        labelTitulo.setText("Pedido numero " + Sesion.getPedidoPulsado().getId());
+             //Cambiar titulo
+        labelTitulo.setText("Pedido número " + Sesion.getPedidoPulsado().getId());
 
-        //Rellenar la tabla
+            //Rellenar la tabla
         cNombre. setCellValueFactory( (fila) -> {
             String nombre = fila.getValue().getNombre();
             return new SimpleStringProperty(nombre);

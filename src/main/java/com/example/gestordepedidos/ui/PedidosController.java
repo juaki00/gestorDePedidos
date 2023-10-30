@@ -19,11 +19,7 @@ public class PedidosController implements Initializable {
     private Label labelNombre;
     @javafx.fxml.FXML
     private TableView<Pedido> tablaPedidos;
-    @javafx.fxml.FXML
-    private TableColumn<Pedido,String> cId;
 
-    @javafx.fxml.FXML
-    private TableColumn<Pedido,String> cCodigo;
     @javafx.fxml.FXML
     private TableColumn<Pedido,String> cFecha;
     @javafx.fxml.FXML
@@ -34,33 +30,28 @@ public class PedidosController implements Initializable {
     private Pane mainPedidos;
     @javafx.fxml.FXML
     private Button btnLogout;
+    @javafx.fxml.FXML
+    private TableColumn<Pedido,String>  cId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-
+            // Listener
         tablaPedidos.getSelectionModel().selectedItemProperty().addListener((observableValue, vOld, vNew) -> {
             Sesion.setPedidoPulsado(vNew);
             MainAplication.loadFXML("detallesPedido-view.fxml", "Detalles del pedido");
         });
 
-
-
         Usuario user = Sesion.getUsuarioActual();
         PedidoDAOImpl daoPedido = new PedidoDAOImpl();
         List<Pedido> pedidosDeUser = daoPedido.pedidosDeUnUsuario(user) ;
 
-
-
-        //Rellenar la tabla
+            //Cambiar Titulo
+        labelNombre.setText("Pedidos de "+user.getNombre()+" ("+user.getEmail()+")");
+            //Rellenar la tabla
         cId.setCellValueFactory( (fila) -> {
             Integer id = fila.getValue().getId();
             return new SimpleStringProperty(id.toString());
-        });
-        cCodigo.setCellValueFactory( (fila) -> {
-            String cod = fila.getValue().getCodigo();
-            return new SimpleStringProperty(cod);
         });
         cFecha.setCellValueFactory( (fila) ->{
             String cantidad = fila.getValue().getFecha();
@@ -74,12 +65,9 @@ public class PedidosController implements Initializable {
             String total = fila.getValue().getTotal();
             return new SimpleStringProperty(total);
         });
-
-
         tablaPedidos.getItems().addAll(pedidosDeUser);
 
-        labelNombre.setText("Pedidos de "+user.getNombre()+" ("+user.getEmail()+")");
-    }
+        }
 
     @javafx.fxml.FXML
     public void logoutButton() {
