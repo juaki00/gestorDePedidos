@@ -21,7 +21,7 @@ public class Database {
                     config.load(is);
 
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("Error de conexion con la base de datos");
 
                 }
                 String host = (String) config.get("host");

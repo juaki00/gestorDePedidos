@@ -47,9 +47,9 @@ public class LoginController implements Initializable {
                 info.setText("Nombre de usuario o contraseña incorrecto(s)");
             }
 
-        } catch (NullPointerException e){
-            info.setText("Error de conexion con la base de datos");
-        }
+        } catch (RuntimeException e){
+        info.setText("Error de conexion con la base de datos");
+    }
     }
 
 }
