@@ -8,6 +8,8 @@ import com.example.sesion.Sesion;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -28,6 +30,10 @@ public class PedidosController implements Initializable {
     private TableColumn<Pedido,String> cUsuario;
     @javafx.fxml.FXML
     private TableColumn<Pedido,String> cTotal;
+    @javafx.fxml.FXML
+    private Pane mainPedidos;
+    @javafx.fxml.FXML
+    private Button btnLogout;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

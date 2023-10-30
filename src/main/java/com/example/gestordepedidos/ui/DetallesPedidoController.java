@@ -33,6 +33,10 @@ public class DetallesPedidoController implements Initializable
     private TableColumn<Item,String> cFecha;
     @FXML
     private Label labelTitulo;
+    @FXML
+    private Button btnLogout;
+    @FXML
+    private Button btnAtras;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
