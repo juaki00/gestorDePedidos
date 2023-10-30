@@ -11,7 +11,7 @@ public class Database {
 
             private static Connection connection;
 
-            private static Logger logger;
+            private final static Logger logger;
 
             static{
                 InputStream is = Database.class.getClassLoader().getResourceAsStream("database.properties");
@@ -35,7 +35,7 @@ public class Database {
                     connection = DriverManager.getConnection(urlCompleta,user,pass);
                     logger.info("Successful connection to database");
                 } catch (SQLException e) {
-                    System.out.println("Error de conexion con la base de datos");;
+                    System.out.println("Error de conexion con la base de datos");
                 }
             }
         public Connection getConnection(){

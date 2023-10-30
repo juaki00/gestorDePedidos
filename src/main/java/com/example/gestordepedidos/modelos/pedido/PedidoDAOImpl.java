@@ -89,9 +89,7 @@ public class PedidoDAOImpl implements PedidoDAO {
             throw new RuntimeException(e);
         }
         DecimalFormat formato = new DecimalFormat("#.00");
-        String redondeado = formato.format(resultado);
-        System.out.println("numero: "+resultado + "redondeado: "+redondeado);
-        return redondeado;
+        return formato.format(resultado);
     }
 }
 
