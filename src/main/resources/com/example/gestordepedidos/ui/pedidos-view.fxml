@@ -22,7 +22,7 @@
     </FlowPane>
     <TableView id="tablaPedidos" fx:id="tablaPedidos" layoutX="15.0" layoutY="86.0" prefHeight="335.0" prefWidth="708.0" snapToPixel="false" stylesheets="@css/estilo3.css">
         <columns>
-            <TableColumn fx:id="cId" minWidth="25.0" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="cId" editable="false" minWidth="25.0" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="cFecha" minWidth="25.0" prefWidth="75.0" text="Fecha" />
             <TableColumn fx:id="cUsuario" minWidth="25.0" prefWidth="75.0" text="Usuario" />
          <TableColumn fx:id="cTotal" minWidth="25.0" prefWidth="75.0" text="Total" />
