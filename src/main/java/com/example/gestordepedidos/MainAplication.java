@@ -17,8 +17,9 @@ public class MainAplication extends Application {
 //        FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setResizable(false);
-        myStage.setResizable(false);
+        stage.setResizable(true);
+        stage.setMinWidth(695);
+        stage.setMinHeight(475);
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();

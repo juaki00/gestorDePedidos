@@ -8,6 +8,7 @@ import com.example.sesion.Sesion;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
@@ -29,13 +30,14 @@ public class PedidosController implements Initializable {
     @javafx.fxml.FXML
     private TableColumn<Pedido,String>  cId;
     @javafx.fxml.FXML
-    private Pane mainPedidos;
-    @javafx.fxml.FXML
     private Button btnLogout;
+    @javafx.fxml.FXML
+    private BorderPane ventana;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        
             // Listener
         tablaPedidos.getSelectionModel().selectedItemProperty().addListener((observableValue, vOld, vNew) -> {
             Sesion.setPedidoPulsado(vNew);
