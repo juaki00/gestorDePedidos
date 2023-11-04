@@ -15,6 +15,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador de la vista de pedidos de un usuario
+ */
 public class PedidosController implements Initializable {
     @javafx.fxml.FXML
     private Label labelNombre;
@@ -34,10 +37,14 @@ public class PedidosController implements Initializable {
     @javafx.fxml.FXML
     private BorderPane ventana;
 
+    /**
+     * Inicializador
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        
             // Listener
         tablaPedidos.getSelectionModel().selectedItemProperty().addListener((observableValue, vOld, vNew) -> {
             Sesion.setPedidoPulsado(vNew);
@@ -71,13 +78,13 @@ public class PedidosController implements Initializable {
 
         }
 
+    /**
+     * Boton logout
+     */
     @javafx.fxml.FXML
     public void logoutButton() {
         Sesion.setUsuarioActual(null);
         Sesion.setPedidoPulsado(null);
         MainAplication.loadFXML("login-view.fxml", "Iniciar Sesión");
     }
-
-
-
 }

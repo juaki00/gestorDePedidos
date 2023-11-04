@@ -1,7 +1,7 @@
 package com.example.gestordepedidos.ui;
 
 import com.example.gestordepedidos.MainAplication;
-import com.example.gestordepedidos.modelos.item.Item;
+import com.example.gestordepedidos.modelos.producto.Producto;
 import com.example.gestordepedidos.modelos.pedido.PedidoDAOImpl;
 import com.example.sesion.Sesion;
 import javafx.scene.control.*;
@@ -17,19 +17,20 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador de la vista de los detalles de un pedido
+ */
 public class DetallesPedidoController implements Initializable
 {
 
     @FXML
-    private TableView<Item> tablaDetallesPedido;
+    private TableView<Producto> tablaDetallesPedido;
     @FXML
-    private TableColumn<Item,String>  cNombre;
+    private TableColumn<Producto,String>  cNombre;
     @FXML
-    private TableColumn<Item,String>  cPrecio;
+    private TableColumn<Producto,String>  cPrecio;
     @FXML
-    private TableColumn<Item,String>  cCantidad;
-    @FXML
-    private TableColumn<Item,String> cFecha;
+    private TableColumn<Producto,String>  cCantidad;
     @FXML
     private Label labelTitulo;
     @FXML
@@ -37,11 +38,16 @@ public class DetallesPedidoController implements Initializable
     @FXML
     private Button btnAtras;
 
+    /**
+     * Inicializador
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
        PedidoDAOImpl dao = new PedidoDAOImpl();
-        ArrayList<Item> items = dao.detallesDeUnPedido(Sesion.getPedidoPulsado());
+        ArrayList<Producto> items = dao.detallesDeUnPedido(Sesion.getPedidoPulsado());
 
              //Cambiar titulo
         labelTitulo.setText("Pedido número " + Sesion.getPedidoPulsado().getId());
@@ -59,20 +65,22 @@ public class DetallesPedidoController implements Initializable
             double precio = fila.getValue().getPrecio();
             return new SimpleStringProperty(Double.toString(precio));
         });
-        cFecha. setCellValueFactory( (fila) -> {
-            String fecha = fila.getValue().getFecha();
-            return new SimpleStringProperty(fecha);
-        });
-        ObservableList<Item> observableList = FXCollections.observableArrayList();
+        ObservableList<Producto> observableList = FXCollections.observableArrayList();
         observableList.addAll(items);
         tablaDetallesPedido.setItems(observableList);
 }
 
+    /**
+     * Boton atras
+     */
     @FXML
     public void atras() {
         MainAplication.loadFXML("pedidos-view.fxml", "Pedidos de " + Sesion.getUsuarioActual().getNombre());
     }
 
+    /**
+     * Boton logout
+     */
     @FXML
     public void logout() {
         Sesion.setUsuarioActual(null);

@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Representa un usuario del sistema
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

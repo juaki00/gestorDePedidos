@@ -14,7 +14,9 @@ import lombok.Data;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+/**
+ * Controlador de la vista del login
+ */
 @Data
 public class LoginController implements Initializable {
 
@@ -27,11 +29,19 @@ public class LoginController implements Initializable {
     @FXML
     private Label info;
 
+    /**
+     * Inicializador
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
+    /**
+     * Boton entrar
+     */
     @FXML
         private void btnEntrar() {
         UsuarioDAO dao = new UsuarioDAOimpl();

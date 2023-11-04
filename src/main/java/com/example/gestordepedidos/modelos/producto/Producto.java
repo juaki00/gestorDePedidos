@@ -2,11 +2,12 @@ package com.example.gestordepedidos.modelos.producto;
 
 import lombok.Data;
 
+/**
+ *Representa un producto
+ */
 @Data
 public class Producto {
-
-    private int id;
     private String nombre;
-    private double precio;
-    private int cantidad;
+    private Integer cantidad ;
+    private Double precio;
 }

@@ -1,5 +1,8 @@
 package com.example.gestordepedidos;
 
+import com.example.gestordepedidos.modelos.pedido.PedidoDAOImpl;
+import com.example.gestordepedidos.modelos.usuario.Usuario;
+import com.example.gestordepedidos.modelos.usuario.UsuarioDAOimpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +17,6 @@ public class MainAplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         myStage = stage;
-//        FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(MainAplication.class.getResource("ui/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(true);
@@ -23,10 +25,6 @@ public class MainAplication extends Application {
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 
 
@@ -43,5 +41,7 @@ public class MainAplication extends Application {
         }
 
     }
-
+    public static void main(String[] args) {
+        launch();
+    }
 }

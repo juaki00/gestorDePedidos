@@ -6,17 +6,39 @@ import lombok.Data;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Implementacion de UsuarioDAO
+ */
 @Data
 public class UsuarioDAOimpl implements UsuarioDAO {
 
+    /**
+     * Conexion con la base de datos
+     */
     private Connection connection = (new Database().getConnection());
+    /**
+     * Query de todos los usuarios
+     */
     private final String QUERYLOADALL = "SELECT * FROM usuario";
-    private final String QUERYLOADLOGIN = "SELECT * FROM usuario WHERE nombre = ? and pass = ?";
+    /**
+     * Query de un usuario por su nombre y contraseña
+     */
+    private final String QUERYLOADLOGIN = "SELECT * FROM usuario WHERE nombreusuario = ? and pass = ?";
 
+    /**
+     * Usuario segun su id
+     * @param id id del usuario
+     * @return Devuelve el usuario con ese id
+     */
     @Override
     public Usuario load(Long id) {
         return null;
     }
+
+    /**
+     * Todos los usuarios de la base de datos
+     * @return Devuelve una lista con todos los usuarios
+     */
     @Override
     public ArrayList<Usuario> loadAll() {
         var salida = new ArrayList<Usuario>();
@@ -26,10 +48,10 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
             while (rs.next()) {
                 Usuario usuario = new Usuario();
-                usuario.setId(rs.getInt("id"));
+                usuario.setId(rs.getInt("id_usuario"));
                 usuario.setPass(rs.getString("pass"));
                 usuario.setEmail(rs.getString("email"));
-                usuario.setNombre(rs.getString("nombre"));
+                usuario.setNombre(rs.getString("nombreusuario"));
                 salida.add(usuario);
             }
         } catch (SQLException e) {
@@ -38,6 +60,12 @@ public class UsuarioDAOimpl implements UsuarioDAO {
         return salida;
     }
 
+    /**
+     * Comprobar en la base de datos si existe un usuario con ese nommbre y contraseña
+     * @param user nombre de usuario
+     * @param pass contraseña
+     * @return devuelve true si el usuario existe
+     */
     public boolean isCorrectUser(String user, String pass) throws NullPointerException{
         boolean salida = false;
         try(PreparedStatement pst = connection.prepareStatement(QUERYLOADLOGIN)){
@@ -53,6 +81,12 @@ public class UsuarioDAOimpl implements UsuarioDAO {
         return salida;
     }
 
+    /**
+     * Devuelve el usuario con ese nombre y contraseña
+     * @param user nombre de usuario
+     * @param pass contraseña
+     * @return devuelve el usuario con ese nombre y contraseña
+     */
     @Override
     public Usuario loadLogin(String user, String pass) {
         Usuario usuario = new Usuario();
@@ -61,8 +95,8 @@ public class UsuarioDAOimpl implements UsuarioDAO {
             pst.setString(2,pass);
             ResultSet rs = pst.executeQuery();
             if(rs.next()){
-                usuario.setId(rs.getInt("id"));
-                usuario.setNombre(rs.getString("nombre"));
+                usuario.setId(rs.getInt("id_usuario"));
+                usuario.setNombre(rs.getString("nombreusuario"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setPass(rs.getString("pass"));
             }

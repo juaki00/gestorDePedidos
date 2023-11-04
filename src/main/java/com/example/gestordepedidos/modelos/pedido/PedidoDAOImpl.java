@@ -1,7 +1,7 @@
 package com.example.gestordepedidos.modelos.pedido;
 
 import com.example.db.Database;
-import com.example.gestordepedidos.modelos.item.Item;
+import com.example.gestordepedidos.modelos.producto.Producto;
 import com.example.gestordepedidos.modelos.usuario.Usuario;
 
 import java.sql.*;
@@ -11,27 +11,53 @@ import java.util.ArrayList;
 
 public class PedidoDAOImpl implements PedidoDAO {
 
+    /**
+     * Conexion con la base de datos
+     */
     private final Connection connection = (new Database().getConnection());
-    private final String QUERYLOADPEDIDOSDEUSUARIO = "SELECT * FROM pedido WHERE usuario = ?";
-    private final String QUERYDETALLESDEUNPEDIDO = "SELECT producto.nombre,item.cantidad,producto.precio,fecha FROM (" +
-            "(pedido INNER JOIN item ON pedido.id = item.id_pedido)" +
-            " INNER JOIN producto ON producto.id = item.id_producto)" +
-            " INNER JOIN usuario ON usuario.id = pedido.usuario" +
-            " WHERE pedido.id = ?";
+    /**
+     * Query de todos los pedidos de un usuario
+     */
+    private final String QUERYLOADPEDIDOSDEUSUARIO = "SELECT * FROM pedido WHERE usuario_id = ?";
+    /**
+     * Query de los productos de un peddido
+     */
+    private final String QUERYDETALLESDEUNPEDIDO = "SELECT producto.nombre,item.cantidad,producto.precio FROM (" +
+            "(pedido INNER JOIN item ON pedido.id_pedido = item.pedido_id)" +
+            " INNER JOIN producto ON producto.id_producto = item.producto_id)" +
+            " INNER JOIN usuario ON usuario.id_usuario = pedido.usuario_id" +
+            " WHERE pedido.id_pedido = ?";
+    /**
+     * Query de la suma total de lo que cuesta un pedido
+     */
     private final String QUERYSUMATOTALDEUNPEDIDO = "SELECT SUM(item.cantidad * producto.precio) AS suma FROM " +
-            "(pedido INNER JOIN item ON pedido.id = item.id_pedido)" +
-            " INNER JOIN producto ON producto.id = item.id_producto" +
-            " WHERE pedido.id = ?";
+            "(pedido INNER JOIN item ON pedido.id_pedido = item.pedido_id)" +
+            " INNER JOIN producto ON producto.id_producto = item.producto_id" +
+            " WHERE pedido.id_pedido = ?";
+
+    /**
+     * Busca el pedido con el id en la base de datos
+     * @param id id del pedido
+     * @return Devuelve el pedido que corresponde a ese id
+     */
     @Override
     public Pedido load(Long id) {
         return null;
     }
 
+    /**
+     * Devuele todos los pedidos de la base de datos
+     * @return Lista de todos los pedidos
+     */
     @Override
     public ArrayList<Pedido> loadAll() {
         return null;
     }
-
+    /**
+     * Devuelve todos los pedidos que ha hrealizado un usuario
+     * @param user usuario
+     * @return Lista de todos los pedidos de un usuario
+     */
     @Override
     public ArrayList<Pedido> pedidosDeUnUsuario(Usuario user) {
         ArrayList<Pedido> pedidos = new ArrayList<>();
@@ -41,10 +67,10 @@ public class PedidoDAOImpl implements PedidoDAO {
 
             while (rs.next()) {
                 Pedido pedido = new Pedido();
-                pedido.setId(rs.getInt("id"));
+                pedido.setId(rs.getInt("id_pedido"));
                 pedido.setCodigo(rs.getString("codigo"));
                 pedido.setFecha(rs.getString("fecha"));
-                pedido.setUsuarioId(rs.getInt("usuario"));
+                pedido.setUsuarioId(rs.getInt("usuario_id"));
                 pedido.setTotal(this.sumaTotalDeUnPedido(pedido.getId()));
                 pedidos.add(pedido);
             }
@@ -55,19 +81,23 @@ public class PedidoDAOImpl implements PedidoDAO {
         return pedidos;
     }
 
-    public ArrayList<Item> detallesDeUnPedido(Pedido pedido) {
-        ArrayList<Item> items = new ArrayList<>();
-        Item item;
+    /**
+     * Busca todos los productos de un pedido
+     * @param pedido pedido
+     * @return Lista de todos los productos de un pedido
+     */
+    public ArrayList<Producto> detallesDeUnPedido(Pedido pedido) {
+        ArrayList<Producto> items = new ArrayList<>();
+        Producto item;
         try (PreparedStatement pst = connection.prepareStatement(QUERYDETALLESDEUNPEDIDO)) {
             pst.setInt(1, pedido.getId());
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()){
-                item = new Item();
+                item = new Producto();
                 item.setNombre(rs.getString("nombre"));
                 item.setCantidad(rs.getInt("cantidad"));
                 item.setPrecio(rs.getDouble("precio"));
-                item.setFecha(rs.getString("fecha"));
                 items.add(item);
             }
         } catch (SQLException e) {
@@ -76,6 +106,11 @@ public class PedidoDAOImpl implements PedidoDAO {
         return items;
     }
 
+    /**
+     * La suma total de lo que cuesta un pedido
+     * @param idPedido id del pedido
+     * @return Suma total de lo que cuesta el pedido en formato string
+     */
     public String sumaTotalDeUnPedido(int idPedido){
         double resultado = 0.0;
         try (PreparedStatement pst = connection.prepareStatement(QUERYSUMATOTALDEUNPEDIDO)) {
