@@ -10,10 +10,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Aplicacion principal
+ */
 public class MainAplication extends Application {
 
-
+    /**
+     * Escena
+     */
     private static Stage myStage;
+
+    /**
+     * Starter de la aplicacion
+     * @param stage Escena
+     * @throws IOException Errores de entrada salida
+     */
     @Override
     public void start(Stage stage) throws IOException {
         myStage = stage;
@@ -27,7 +38,11 @@ public class MainAplication extends Application {
         stage.show();
     }
 
-
+    /**
+     * Cargar nueva escena
+     * @param fxml archivo fxml
+     * @param titulo Titulo de la nueva escena
+     */
     public static void loadFXML(String fxml, String titulo){
 
         try {
@@ -41,6 +56,10 @@ public class MainAplication extends Application {
         }
 
     }
+
+    /**
+     * Metodo main
+     */
     public static void main(String[] args) {
         launch();
     }

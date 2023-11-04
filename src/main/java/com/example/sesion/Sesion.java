@@ -6,14 +6,22 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-
+/**
+ * Representa una sesion donde almacenar las variables de sesion
+ */
 @Data
 public class Sesion {
 
+    /**
+     * Usuario logeado
+     */
     @Setter
     @Getter
     private static Usuario usuarioActual;
 
+    /**
+     * Pedido pulsado por el usuario
+     */
     @Setter
     @Getter
     private static Pedido pedidoPulsado;
